@@ -5,8 +5,8 @@
   Master project:	https://github.com/SwiftOnSecurity/sysmon-config
   Master license:	Creative Commons Attribution 4.0 | You may privatize, fork, edit, teach, publish, or deploy for commercial use - with attribution in the text.
 
-  Fork version:	100
-  Fork author:	ionstorm
+  Fork version:	002
+  Fork author:	tjr1775
   Fork project:	https://github.com/ion-storm/sysmon-config
   Fork license:	Creative Commons Attribution 4.0 | You may privatize, fork, edit, teach, publish, or deploy for commercial use - with attribution in the text.
 
@@ -27,6 +27,8 @@
 		"ProcessGuid" is randomly generated, assigned, and tracked by Sysmon to assist in tracing individual process launches.
 		"LoginGuid" is randomly generated, assigned, and tracked by Sysmon to assist in tracing individual user sessions.
 -->
+
+<!--mfdg-->
 
 <Sysmon schemaversion="3.30">
 	<HashAlgorithms>sha256,imphash</HashAlgorithms>

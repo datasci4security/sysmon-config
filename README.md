@@ -2,7 +2,7 @@
 
 This is a Microsoft Sysinternals Sysmon configuration file template with default high-quality event tracing.
 
-The file provided should function as a great starting point for system monitoring in a self-contained package. This configuration and results should give you a good idea of what's possible for Sysmon.
+This branch is part of an endpoint agent project using Sysmon + ElasticBeats + ElasticSearch that aims to create a lightweight, packageable endpoint agent for end-user laptops and servers. (tjr1775)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**[sysmonconfig-export.xml](https://github.com/ion-storm/sysmon-config/blob/master/sysmonconfig-export.xml)**
 
@@ -48,6 +48,3 @@ sc sdset Sysmon D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;B
 
 ~~~~
 
-### Graylog Configuration ###
-
-(https://github.com/ion-storm/Graylog_Sysmon)
