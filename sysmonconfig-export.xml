@@ -319,7 +319,7 @@
 			<Image condition="image">certutil.exe</Image> <!--Microsoft:Windows: Certificate tool can contact outbound | Credit @ion-storm and @FVT [ https://twitter.com/FVT/status/834433734602530817 ] -->
 			<Image condition="image">cmd.exe</Image> <!--Microsoft:Windows: Command prompt-->
 			<Image condition="image">cscript.exe</Image> <!--Microsoft:WindowsScriptingHost: | Credit @Neo23x0 [ https://gist.github.com/Neo23x0/a4b4af9481e01e749409 ] -->
-			<Image condition="image">wscript.exe</Image><Image condition="image">wscript.exe</Image> <!--Microsoft:WindowsScriptingHost: | Credit @arekfurt -->
+			<Image condition="image">wscript.exe</Image> <!--Microsoft:WindowsScriptingHost: | Credit @arekfurt -->
 			<Image condition="image">rundll32.exe</Image> <!--Microsoft:Windows: [ https://blog.cobaltstrike.com/2016/07/22/why-is-rundll32-exe-connecting-to-the-internet/ ] -->
 			<Image condition="image">notepad.exe</Image> <!--Microsoft:Windows: [ https://blog.cobaltstrike.com/2013/08/08/why-is-notepad-exe-connecting-to-the-internet/ ] -->
 			<Image condition="image">regsvr32.exe</Image> <!--Microsoft:Windows: [ https://subt0x10.blogspot.com/2016/04/bypass-application-whitelisting-script.html ] -->
@@ -364,12 +364,14 @@
 			<DestinationHostname condition="is">ifconfig.me</DestinationHostname> <!--Malware uses to get external IP address-->
 			<DestinationHostname condition="is">ifconfig.co</DestinationHostname> <!--Malware uses to get external IP address-->
 			<DestinationHostname condition="is">ipaddress.com</DestinationHostname> <!--Malware uses to get external IP address-->
+			<DestinationHostname condition="is">ipchicken.com</DestinationHostname> <!--Malware uses to get external IP address | tjr1775-->
 			<DestinationHostname condition="is">ipinfo.io</DestinationHostname> <!--Malware uses to get external IP address-->
 			<DestinationHostname condition="end with">goo.gl</DestinationHostname>
 			<DestinationHostname condition="end with">git.io</DestinationHostname>
 			<DestinationHostname condition="end with">bit.ly</DestinationHostname>
 			<DestinationHostname condition="end with">t.co</DestinationHostname>
 			<DestinationHostname condition="end with">ow.ly</DestinationHostname>
+			<DestinationHostname condition="end with">volafile.io</DestinationHostname> <!--Hawkeye Keylogger | tjr1775-->
 			<!--Dynamic DNS Providers-->
 			<DestinationHostname condition="end with">dlinkddns.com</DestinationHostname> <!--Malware frequently uses dynamic DNS providers for C2 traffic | credit @daniel-gallagher -->
 			<DestinationHostname condition="end with">no-ip.com</DestinationHostname> <!--Malware frequently uses dynamic DNS providers for C2 traffic | credit @daniel-gallagher -->
@@ -426,7 +428,6 @@
 			<DestinationPort condition="is">243</DestinationPort> <!--Suspicious Ports: https://docs.google.com/spreadsheets/d/17pSTDNpa0sf6pHeRhusvWG6rThciE8CsXTSlDUAZDyo -->
 			<DestinationPort condition="is">65535</DestinationPort> <!--Suspicious Ports: https://docs.google.com/spreadsheets/d/17pSTDNpa0sf6pHeRhusvWG6rThciE8CsXTSlDUAZDyo -->
 			<DestinationPort condition="is">13506</DestinationPort> <!--Suspicious Ports: https://docs.google.com/spreadsheets/d/17pSTDNpa0sf6pHeRhusvWG6rThciE8CsXTSlDUAZDyo -->
-			<DestinationPort condition="is">3360</DestinationPort> <!--Suspicious Ports: https://docs.google.com/spreadsheets/d/17pSTDNpa0sf6pHeRhusvWG6rThciE8CsXTSlDUAZDyo -->
 			<DestinationPort condition="is">200</DestinationPort> <!--Suspicious Ports: https://docs.google.com/spreadsheets/d/17pSTDNpa0sf6pHeRhusvWG6rThciE8CsXTSlDUAZDyo -->
 			<DestinationPort condition="is">198</DestinationPort> <!--Suspicious Ports: https://docs.google.com/spreadsheets/d/17pSTDNpa0sf6pHeRhusvWG6rThciE8CsXTSlDUAZDyo -->
 			<DestinationPort condition="is">49180</DestinationPort> <!--Suspicious Ports: https://docs.google.com/spreadsheets/d/17pSTDNpa0sf6pHeRhusvWG6rThciE8CsXTSlDUAZDyo -->
@@ -469,6 +470,9 @@
 			<DestinationPort condition="is">7210</DestinationPort> <!--Suspicious Ports: https://docs.google.com/spreadsheets/d/17pSTDNpa0sf6pHeRhusvWG6rThciE8CsXTSlDUAZDyo -->
 			<DestinationPort condition="is">4040</DestinationPort> <!--Suspicious Ports: https://docs.google.com/spreadsheets/d/17pSTDNpa0sf6pHeRhusvWG6rThciE8CsXTSlDUAZDyo -->
 			<DestinationPort condition="is">9943</DestinationPort> <!--Suspicious Ports: https://docs.google.com/spreadsheets/d/17pSTDNpa0sf6pHeRhusvWG6rThciE8CsXTSlDUAZDyo -->
+			<DestinationPort condition="is">3306</DestinationPort> <!--MsSQL Server port | tjr1775-->
+			<DestinationPort condition="is">5432</DestinationPort> <!--PostGreSQL Server port | tjr1775-->
+			<DestinationPort condition="is">123</DestinationPort> <!--NTP port TCP | tjr1775-->
 		</NetworkConnect>
 		<NetworkConnect onmatch="exclude">
 			<!--SECTION: Microsoft -->
@@ -794,6 +798,11 @@
 			<TargetFilename condition="contains">.crl</TargetFilename>
 			<TargetFilename condition="contains">.sst</TargetFilename>
 			<TargetFilename condition="contains">.key</TargetFilename>
+			<!--SECTION: Hawkeye KeyLogger and AV-avoiding variants | added by tjr1775-->
+			<TargetFilename condition="contains">Appdata\Sysinfo.txt</TargetFilename>
+			<TargetFilename condition="contains">Appdata\pid.txt</TargetFilename>
+			<TargetFilename condition="contains">Appdata\pidloc.txt</TargetFilename>
+			<TargetFilename condition="contains">Appdata\WindowsUpdate.exe</TargetFilename>
 			<!--SECTION: CIA Vault7 Leak -->
 			<TargetFilename condition="contains">.mht</TargetFilename> <!-- Vault7 CIA Leak: Possible malformed file will escape IE sandbox -->
 			<TargetFilename condition="contains">.cpl</TargetFilename> <!-- Vault7 CIA Leak: Control Panel Persistence -->
